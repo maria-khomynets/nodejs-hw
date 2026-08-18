@@ -1,0 +1,40 @@
+// src/models/note.js
+
+import { Schema } from 'mongoose';
+import { model } from 'mongoose';
+
+const noteSchema = new Schema({
+  title: {
+    type: String,
+    required: true,
+    trim: true, // прибирає пробіли на початку та в кінці
+  },
+  content: {
+    type: String,
+    required: false,
+    trim: true,
+    default: '',
+  },
+  tag: {
+    type: String,
+
+    enum: [
+      'Work',
+      'Personal',
+      'Meeting',
+      'Shopping',
+      'Ideas',
+      'Travel',
+      'Finance',
+      'Health',
+      'Important',
+      'Todo',
+    ],
+    default: 'Todo',
+  },
+});
+
+export const Note = model('Note', noteSchema, {
+  timestamps: true,
+  versionKey: false,
+});
