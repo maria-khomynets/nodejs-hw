@@ -44,18 +44,15 @@ export const deleteNote = async (req, res) => {
 };
 
 export const updateNote = async (req, res) => {
-  const { title, noteId } = req.params;
+  const { noteId } = req.params;
 
-  const note = await Note.findOneAndUpdate(
-    { _id: noteId }, // Шукаємо по id
-    req.body,
-    { returnDocument: 'after' }, // повертаємо оновлений документ
-  );
+  const note = await Note.findOneAndUpdate({ _id: noteId }, req.body, {
+    returnDocument: 'after',
+  });
 
   if (!note) {
     throw createHttpError(404, 'Note not found');
   }
-  if (!title) throw createHttpError(400, 'Title is required');
 
   res.status(200).json(note);
 };
