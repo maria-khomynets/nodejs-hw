@@ -8,9 +8,10 @@ import {
   updateNote,
 } from '../controllers/notesController.js';
 
-import { createNoteSchema } from '../validations/studentsValidation.js';
-
-import { noteIdParamSchema } from '../validations/notesValidation.js';
+import {
+  createNoteSchema,
+  noteIdParamSchema,
+} from '../validations/notesValidation.js';
 
 const router = Router();
 router.get('/notes', getAllNotes);
