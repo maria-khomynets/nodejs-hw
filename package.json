@@ -13,7 +13,7 @@
   "author": "Maria Khomynets <masha.khomynets@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "bcryptjs": "^3.0.3",
+    "bcrypt": "^6.0.0",
     "celebrate": "^15.0.3",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
