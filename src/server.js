@@ -5,7 +5,6 @@ import cookieParser from 'cookie-parser';
 import { errors } from 'celebrate';
 
 import { logger } from './middleware/logger.js';
-import { notFoundHandler } from './middleware/notFoundHandler.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import { connectMongoDB } from './db/connectMongoDB.js';
 import authRoutes from './routes/authRoutes.js';
@@ -28,7 +27,9 @@ app.use(userRoutes);
 
 app.use(errors());
 
-app.use(notFoundHandler);
+app.use((req, res) => {
+  res.status(404).json({ message: 'Route not found' });
+});
 
 app.use(errorHandler);
 
